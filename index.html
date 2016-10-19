@@ -3,27 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>Color Home</title>
-    <script src="jquery-latest.js"></script>
+
     <style type="text/css">
+      * {
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
       html, body {
         margin: 0px;
         padding: 0px;
+
+        width: 100%;
+        height: 100%;
       }
       .colorCanvas {
         float: left;
-        margin: 5px;
-        font-size: 20px;
-        line-height: 20px;
-      }
+        margin: 5px 0 0 5px;
 
+        text-align: center;
+        font-size: 20px;
+        line-height: 200px;
+      }
     </style>
   </head>
   <body>
     <div id="container"></div>
     <script type="text/javascript">
-      var color = "";
-      var width = $(document).width() - 20;
-      var height = $(document).height() - 20;
+      var width = document.documentElement.clientWidth;
+      var height = document.documentElement.clientHeight;
+      var container = document.getElementById('container');
+
+      var color;
       var w = 1;
       var h = 1;
 
@@ -37,22 +49,26 @@
       }
       height = (height-(h+1)* 5) / h;
 
-      for (var i=1; i <= h; i++) {
-        for (var j=1; j <= w; j++) {
+      for (var y=0; y < h; y++) {
+        for (var x=0; x < w; x++) {
           // Random color code from the comments section of http://paulirish.com/2009/random-hex-color-code-snippets/
-          color = "#" + Math.random().toString(16).slice(2, 8);
+          color = '#' + Math.random().toString(16).slice(2, 8);
 
-          document.getElementById('container').innerHTML += '<div class="colorCanvas" id="r'+i+'-c'+j+'">'+j+'</div>';
-          document.getElementById('r'+i+'-c'+j).style.background = color;
-          document.getElementById('r'+i+'-c'+j).innerHTML = color;
+          var div = document.createElement('div');
+          div.id = 'x'+x+'-y'+y;
+          div.className = 'colorCanvas';
+
+          div.style.background = color;
+          div.style.innerHTML = color;
+
+          div.style.width = width + 'px';
+          div.style.height = height + 'px';
+
+          div.innerHTML = color;
+
+          container.append(div);
         }
       }
-
-      for (var i = 0; i < $('.colorCanvas').length; i++) {
-        $('.colorCanvas')[i].style.width = width.toString()+"px";
-        $('.colorCanvas')[i].style.height = height.toString()+"px";
-      };
-
     </script>
   </body>
 </html>
