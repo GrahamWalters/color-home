@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Color Home</title>
-		<script src="jquery-latest.js"></script>
-		<style type="text/css">
-			html, body {
-				margin: 0px;
-				padding: 0px;
-			}
-			.colorCanvas {
-				float: left;
-				margin: 5px;
-				font-size: 20px;
-				line-height: 20px;
-			}
+  <head>
+    <meta charset="utf-8">
+    <title>Color Home</title>
+    <script src="jquery-latest.js"></script>
+    <style type="text/css">
+      html, body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .colorCanvas {
+        float: left;
+        margin: 5px;
+        font-size: 20px;
+        line-height: 20px;
+      }
 
-		</style>
-	</head>
-	<body>
-		<div id="container"></div>
-		<script type="text/javascript">
-			var color = "";
-			var width = $(document).width() - 20;
-			var height = $(document).height() - 20;
-			var w = 1;
-			var h = 1;
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript">
+      var color = "";
+      var width = $(document).width() - 20;
+      var height = $(document).height() - 20;
+      var w = 1;
+      var h = 1;
 
-			while ((width-(w+1)*5)/w > 250.0) {
-				w += 1;
-			}
-			width = (width-(w+1)* 5) / w;
-			
-			while ((height-(h+1)*5)/h > 250.0) {
-				h += 1;
-			}
-			height = (height-(h+1)* 5) / h;
+      while ((width-(w+1)*5)/w > 250.0) {
+        w += 1;
+      }
+      width = (width-(w+1)* 5) / w;
 
-			for (var i=1; i <= h; i++) {
-				for (var j=1; j <= w; j++) {
-					// Random color code from the comments section of http://paulirish.com/2009/random-hex-color-code-snippets/
-					color = "#" + Math.random().toString(16).slice(2, 8);
+      while ((height-(h+1)*5)/h > 250.0) {
+        h += 1;
+      }
+      height = (height-(h+1)* 5) / h;
 
-					document.getElementById('container').innerHTML += '<div class="colorCanvas" id="r'+i+'-c'+j+'">'+j+'</div>';
-					document.getElementById('r'+i+'-c'+j).style.background = color;
-					document.getElementById('r'+i+'-c'+j).innerHTML = color;
-				}
-			}
+      for (var i=1; i <= h; i++) {
+        for (var j=1; j <= w; j++) {
+          // Random color code from the comments section of http://paulirish.com/2009/random-hex-color-code-snippets/
+          color = "#" + Math.random().toString(16).slice(2, 8);
 
-			for (var i = 0; i < $('.colorCanvas').length; i++) {
-				$('.colorCanvas')[i].style.width = width.toString()+"px";
-				$('.colorCanvas')[i].style.height = height.toString()+"px";
-			};
-			
-		</script>
-	</body>
+          document.getElementById('container').innerHTML += '<div class="colorCanvas" id="r'+i+'-c'+j+'">'+j+'</div>';
+          document.getElementById('r'+i+'-c'+j).style.background = color;
+          document.getElementById('r'+i+'-c'+j).innerHTML = color;
+        }
+      }
+
+      for (var i = 0; i < $('.colorCanvas').length; i++) {
+        $('.colorCanvas')[i].style.width = width.toString()+"px";
+        $('.colorCanvas')[i].style.height = height.toString()+"px";
+      };
+
+    </script>
+  </body>
 </html>
